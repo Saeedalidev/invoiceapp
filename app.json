@@ -1,0 +1,8 @@
+{
+  "name": "InvoiceCreator",
+  "displayName": "InvoiceCreator",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-3572144641927803~4915004343",
+    "ios_app_id": "ca-app-pub-3572144641927803~6197170146"
+  }
+}
