@@ -34,6 +34,19 @@ local.properties
 *.keystore
 !debug.keystore
 .kotlin/
+# Gradle
+.gradle/
+build/
+
+# Local config
+local.properties
+
+# Logs
+*.log
+# Android build outputs
+android/app/release/
+android/app/src/main/assets/*.bundle
+*.aab
 
 # node.js
 #
