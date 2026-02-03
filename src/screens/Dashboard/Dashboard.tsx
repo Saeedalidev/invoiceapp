@@ -22,6 +22,8 @@ const Dashboard = ({ navigation }: RootScreenProps<'Dashboard'>) => {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [refreshing, setRefreshing] = useState(false);
   const [stats, setStats] = useState({ outstanding: 0, unpaidCount: 0 });
+  const [isAdError, setIsAdError] = useState(false);
+  const [isAdLoaded, setIsAdLoaded] = useState(false);
 
   // Preload rewarded ad on dashboard mount
   // The hook handles loading automatically on mount
@@ -257,21 +259,25 @@ const Dashboard = ({ navigation }: RootScreenProps<'Dashboard'>) => {
           )}
         </View>
       </ScrollView>
-      {SHOW_ADS && (
+      {SHOW_ADS && !isAdError && (
         <View style={{
           alignItems: 'center',
-          backgroundColor: colors.card,
-          // borderTopWidth: 1,
-          // borderTopColor: colors.border,
-          // paddingTop: spacing.sm,
-          // paddingBottom: Math.max(insets.bottom, spacing.sm),
-          marginBottom: 40,
+          backgroundColor: colors.background,
+          marginBottom: isAdLoaded ? 40 : 0,
         }}>
           <BannerAd
             unitId={FINAL_BANNER_ID}
             size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
             requestOptions={{
               requestNonPersonalizedAdsOnly: true,
+            }}
+            onAdLoaded={() => {
+              console.log('[Dashboard] Banner ad loaded');
+              setIsAdLoaded(true);
+            }}
+            onAdFailedToLoad={(error) => {
+              console.log('[Dashboard] Banner ad failed to load:', error);
+              setIsAdError(true);
             }}
           />
         </View>

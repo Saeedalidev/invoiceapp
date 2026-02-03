@@ -20,7 +20,7 @@ const REWARDED_AD_UNIT_ID = __DEV__
 const BANNER_AD_UNIT_ID = __DEV__
     ? TestIds.BANNER
     : Platform.select({
-        ios: 'ca-app-pub-4844847303742824/XXXXXXXXXX', // Replace if you have iOS Banner ID
+        ios: 'ca-app-pub-4844847303742824/2456270073', // Replace if you have iOS Banner ID
         android: 'ca-app-pub-3572144641927803/8213947497',
     }) || TestIds.BANNER;
 
